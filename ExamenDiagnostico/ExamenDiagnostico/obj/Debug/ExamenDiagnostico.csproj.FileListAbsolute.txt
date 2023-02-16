@@ -1,0 +1,7 @@
+C:\Users\Omar\source\repos\ExamenDiagnostico\ExamenDiagnostico\bin\Debug\ExamenDiagnostico.exe.config
+C:\Users\Omar\source\repos\ExamenDiagnostico\ExamenDiagnostico\bin\Debug\ExamenDiagnostico.exe
+C:\Users\Omar\source\repos\ExamenDiagnostico\ExamenDiagnostico\bin\Debug\ExamenDiagnostico.pdb
+C:\Users\Omar\source\repos\ExamenDiagnostico\ExamenDiagnostico\obj\Debug\ExamenDiagnostico.csproj.AssemblyReference.cache
+C:\Users\Omar\source\repos\ExamenDiagnostico\ExamenDiagnostico\obj\Debug\ExamenDiagnostico.csproj.CoreCompileInputs.cache
+C:\Users\Omar\source\repos\ExamenDiagnostico\ExamenDiagnostico\obj\Debug\ExamenDiagnostico.exe
+C:\Users\Omar\source\repos\ExamenDiagnostico\ExamenDiagnostico\obj\Debug\ExamenDiagnostico.pdb
