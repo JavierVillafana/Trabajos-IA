@@ -112,7 +112,6 @@ public class ArbolBusqueda {
             }
             nodoActual = estadosPorVisitar.poll();    
             a.imprimeSolucion(raiz, nodoActual);
-            System.out.println("\n------");
 
         }
         System.out.println("YA SE ENCONTRO EL NODO OBJETIVO");
@@ -176,72 +175,28 @@ public class ArbolBusqueda {
                 num2 = 0;
             }
 
-            resultado = resultado + Math.abs(num1 - num2);
+            resultado += Math.abs(num1 - num2);
         }
         return resultado;
     }
 
-    private int Heuristica3(String estado, String objetivo2)
+    private int Heuristica3(String estado, String objetivo) 
     {
         int resultado = 0;
+        int tamaño = (int) Math.sqrt(estado.length());
 
-        int posE1 = 3, posE2 = 6, posO1 = 3, posO2 = 6;
-
-        int numEstado1 = 0,numEstado2 = 0,numEstado3 = 0;
-        int numObjetivo1 = 0, numObjetivo2 = 0, numObjetivo3 = 0;
-
-        int sumEstado, sumObjetivo;
-
-        for (int i = 0; i <= estado.length(); i++) {
-
-            //Estado
-            if (i < 3) {
-                numEstado1 = numEstado1 + Character.getNumericValue(estado.charAt(i));
-                if (estado.charAt(i) == ' ') 
-                    numEstado1 = 0;
-            }
-
-            if (i < 6) {
-                numEstado2 = numEstado2 + Character.getNumericValue(estado.charAt(posE1));
-                if (estado.charAt(i) == ' ') 
-                    numEstado2 = 0;
-                posE1++;
-            }
-
-            if (i < 9) {
-                numEstado3 = numEstado3 + Character.getNumericValue(estado.charAt(posE2));
-                if (estado.charAt(posE2) == ' ') 
-                    numEstado3 = 0;
-                posE2++;
-            }
+        for (int i = 0; i < estado.length(); i++) {
+            char num = estado.charAt(i);
             
-            //Objetivo
-            if (i < 3) {
-                numObjetivo1 = numObjetivo1 + Character.getNumericValue(objetivo2.charAt(i));
-                if (objetivo2.charAt(i) == ' ') 
-                    numObjetivo1 = 0;
+            if (num != '0') { // Ignorar la ficha vacía
+                int j = objetivo.indexOf(num);
+                int row = i / tamaño, col = i % tamaño;
+                int targetRow = j / tamaño, targetCol = j % tamaño;
+                resultado += Math.abs(row - targetRow) + Math.abs(col - targetCol);
             }
-
-            if (i < 6) {
-                numObjetivo2 = numObjetivo2 + Character.getNumericValue(objetivo2.charAt(posO1));
-                if (objetivo2.charAt(posO1) == ' ') 
-                    numObjetivo2 = 0;
-                posO1++;
-            }
-
-            if (i < 9) {
-                numObjetivo3 = numObjetivo3 + Character.getNumericValue(objetivo2.charAt(posO2));
-                if (objetivo2.charAt(posO2) == ' ') 
-                    numObjetivo3 = 0;
-                posO2++;
-            }
-
-            sumEstado = numEstado1 + numEstado2 + numEstado3;
-            sumObjetivo = numObjetivo1 + numObjetivo2 + numObjetivo3;
-
-            resultado = resultado + Math.abs(sumEstado - sumObjetivo);
         }
         return resultado;
     }
-    
 }
+
+    
