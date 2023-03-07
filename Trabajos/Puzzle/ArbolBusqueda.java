@@ -90,6 +90,7 @@ public class ArbolBusqueda {
         Nodo nodoActual = raiz;
         Collection<String> estadosVisitados = new ArrayList<String>();
         PriorityQueue<Nodo> estadosPorVisitar = new PriorityQueue<Nodo>();
+        long inicioTiempo = System.currentTimeMillis();
         while(!nodoActual.getEstado().equals(objetivo))
         {
             estadosVisitados.add(nodoActual.getEstado());
@@ -102,8 +103,8 @@ public class ArbolBusqueda {
                     //Crear nuevo Nodo.
                     Nodo nHijo = new Nodo(hijo);
                     // nHijo.costo = Heuristica1(nHijo.getEstado(), objetivo); 
-                    // nHijo.costo = Heuristica2(nHijo.getEstado(), objetivo);
-                    nHijo.costo = Heuristica3(nHijo.getEstado(), objetivo);
+                    nHijo.costo = Heuristica2(nHijo.getEstado(), objetivo);
+                    // nHijo.costo = Heuristica3(nHijo.getEstado(), objetivo);
 
                     nHijo.setPadre(nodoActual);
                     estadosPorVisitar.add(nHijo);
@@ -114,14 +115,21 @@ public class ArbolBusqueda {
             a.imprimeSolucion(raiz, nodoActual);
 
         }
+        long finTiempo = System.currentTimeMillis();
+        long duracion = (finTiempo - inicioTiempo); 
+        
         System.out.println("YA SE ENCONTRO EL NODO OBJETIVO");
         System.out.println(nodoActual.getEstado());
+
+        System.out.println("Tiempo de ejecución en milisegundos: " + duracion);
+        
     }
 
     public void busquedaPorProfundidadHeuristica(){
         Nodo nodoActual = raiz;
         Collection<String> estadosVisitados = new ArrayList();
         Stack<Nodo> estadosPorVisitar = new Stack<>();
+        long inicioTiempo = System.currentTimeMillis();
         while(!nodoActual.getEstado().equals(objetivo))
         {
             estadosVisitados.add(nodoActual.getEstado());
@@ -143,6 +151,9 @@ public class ArbolBusqueda {
             System.out.println("\n------");
 
         }
+        long finTiempo = System.currentTimeMillis();
+        long duracion = ((finTiempo - inicioTiempo) / 1000); 
+        System.out.println("Tiempo de ejecución en segundos: " + duracion);
         System.out.println("YA SE ENCONTRO EL NODO OBJETIVO");
         System.out.println(nodoActual.getEstado());
     }
