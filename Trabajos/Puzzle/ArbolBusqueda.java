@@ -31,6 +31,7 @@ public class ArbolBusqueda {
         Nodo nodoActual = raiz;
         Collection<String> estadosVisitados = new ArrayList<String>();
         Queue<Nodo> estadosPorVisitar = new LinkedList<Nodo>();
+        long inicioTiempo = System.currentTimeMillis();
         while(!nodoActual.getEstado().equals(objetivo))
         {
             estadosVisitados.add(nodoActual.getEstado());
@@ -52,8 +53,14 @@ public class ArbolBusqueda {
             System.out.println("\n------");
 
         }
+        long finTiempo = System.currentTimeMillis();
+        long duracion = (finTiempo - inicioTiempo);
+
         System.out.println("YA SE ENCONTRO EL NODO OBJETIVO");
         System.out.println(nodoActual.getEstado());
+
+        System.out.println("Tiempo de ejecución en milisegundos: " + duracion);
+
     }
 
     public void busquedaPorProfundidad()
@@ -61,6 +68,7 @@ public class ArbolBusqueda {
         Nodo nodoActual = raiz;
         Collection<String> estadosVisitados = new ArrayList();
         Stack<Nodo> estadosPorVisitar = new Stack<>();
+        long inicioTiempo = System.currentTimeMillis();
         while(!nodoActual.getEstado().equals(objetivo))
         {
             estadosVisitados.add(nodoActual.getEstado());
@@ -78,12 +86,18 @@ public class ArbolBusqueda {
 
             }
             nodoActual = estadosPorVisitar.pop();           
-            // a.imprimeSolucion(raiz, nodoActual);
+            a.imprimeSolucion(raiz, nodoActual);
             System.out.println("\n------");
 
         }
+        long finTiempo = System.currentTimeMillis();
+        long duracion = (finTiempo - inicioTiempo);
+
         System.out.println("YA SE ENCONTRO EL NODO OBJETIVO");
         System.out.println(nodoActual.getEstado());
+
+        System.out.println("Tiempo de ejecución en milisegundos: " + duracion);
+
     }
 
     public void busquedaPorAnchuraHeuristica(){
@@ -103,8 +117,8 @@ public class ArbolBusqueda {
                     //Crear nuevo Nodo.
                     Nodo nHijo = new Nodo(hijo);
                     // nHijo.costo = Heuristica1(nHijo.getEstado(), objetivo); 
-                    nHijo.costo = Heuristica2(nHijo.getEstado(), objetivo);
-                    // nHijo.costo = Heuristica3(nHijo.getEstado(), objetivo);
+                    // nHijo.costo = Heuristica2(nHijo.getEstado(), objetivo);
+                    nHijo.costo = Heuristica3(nHijo.getEstado(), objetivo);
 
                     nHijo.setPadre(nodoActual);
                     estadosPorVisitar.add(nHijo);
